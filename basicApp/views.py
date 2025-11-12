@@ -8,7 +8,7 @@ def home(request):
     age = 25
     dogs = ['dog1', 'dog2']
     info = {"b.tech": 'RJIT', "job": "netmax"}
-    isActive = True
+    isActive = False
     di = {'name': name, "age": age, 'dogs': dogs, 'info': info, 'active': isActive}
     return render(request, "base.html", context= di)
 
