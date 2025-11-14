@@ -4,5 +4,6 @@ from . import views
 
 urlpatterns = [
     path("", views.myAppHomeView),
-    path("http-page", views.HtmlSamplePage),
+    path("http-page/", views.HtmlSamplePage),
+    path('sending-data/', views.sendingData)
 ]

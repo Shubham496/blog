@@ -17,6 +17,10 @@ def sendingData(request):
 
     di = {
         'name': "shubham",
+        'age': 25,
+        'isActive': True,
+        "dogs": ["dog1", "dog2"],
+        "info": {"edu":"b.tech", "job": "netmax"}
 
     }
     return render(request, "dataloading.html", context=di)
