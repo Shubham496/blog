@@ -1,31 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Data Loading</title>
 </head>
+
 <body>
     <div class="container">
         <div class="spinner"></div>
-        <h1>Loading Data...</h1>
+        <h3>Loading Data...</h3>
         <p>Please wait while we load your data.</p>
     </div>
 
     <br>
-    <h1> {{name}} </h1>
-        <br>
-    <h1> {{age}} </h1>
+    <h3> {{name}} </h3>
+    <br>
+    <h3> {{age}} </h3>
 
-        <br>
-    <h1> {{isActive}} </h1>
+    <br>
+    <h3> {{isActive}} </h3>
 
-        <br>
-    <h1> {{dogs}} </h1>
+    <br>
+    <h3> {{dogs}} </h3>
 
-        <br>
-    <h1> {{info}} </h1>
+    <br>
+    <h3> {{info}} </h3>
 
+    {% if name %}
+    <h3> hello {{name}}</h3>
 
+    {% else %}
+    <h3> hello Player</h3>
+    {% endif %}
+
+    <ul>
+        {% for dog in dogs %}
+        <li>
+            <h3> {{ dog }} </h3>
+        </li>
+
+        {% endfor %}
+    </ul>
 </body>
+
 </html>

@@ -24,3 +24,11 @@ def sendingData(request):
 
     }
     return render(request, "dataloading.html", context=di)
+
+
+def base(request):
+    return render(request, "base.html")
+
+
+def extend(request):
+    return render(request, 'extend.html')
