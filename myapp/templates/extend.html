@@ -1,4 +1,26 @@
 {% extends "base.html" %}
 
-{% block content %} HELLO {% endblock content %}
+{% block content %} HELLO 
+
+{% if user.is_authenticated %}
+    hello {{user}}
+
+{% else%}
+    hello player
+{% endif %}
+
+{{ user }}
+{% endblock content %}
+
+
+
+
+
+{% block nav %}
+
+{% include "components/nav.html" %}
+
+{% endblock nav %}
+
+
 

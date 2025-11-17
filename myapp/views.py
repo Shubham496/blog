@@ -32,3 +32,7 @@ def base(request):
 
 def extend(request):
     return render(request, 'extend.html')
+
+
+
+
