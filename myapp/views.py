@@ -98,3 +98,46 @@ def filterEmployee(request, salary):
     emp = Emloyee.objects.filter(salary__gte = salary)
     data = {"data": emp}
     return render(request, "all_employee.html", context=data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+from django.contrib.auth.models import User
+
+
+from django.contrib.auth import logout, login, authenticate
+
+
+
+
+def profile(request, id=1):
+    profile = request.user
+    if not request.user.is_authenticated:
+        return redirect('home' )
+    
+    data = {"data": profile}
+    return render(request,"profile.html", data)
+        
+
+
+
+
+
