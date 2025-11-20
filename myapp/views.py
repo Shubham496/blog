@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 from django.http import HttpResponse
@@ -42,7 +42,7 @@ def extend(request):
 
 
 from .models import *
-
+from .forms import EmployeeForm
 
 def all_employee_view(request):
     emp = Emloyee.objects.all()
@@ -54,7 +54,47 @@ def all_employee_view(request):
 
 def employee_detail_view(request, id):
     emp = Emloyee.objects.get(id=id)
-    data = {'employee': emp}
+    empForm = EmployeeForm(instance=emp)
+
+    if request.method == "POST":
+        empForm = EmployeeForm(request.POST, instance=emp)
+        if empForm.is_valid():
+            empForm.save()
+
+    data = {'formData':empForm, "employee": emp}
     return render(request, "employee.html", data)
 
 
+
+from django.shortcuts import render, redirect
+
+def createNewEmployee(request):
+    empForm = EmployeeForm()
+    if request.method == "POST":
+        empForm = EmployeeForm(request.POST)
+        if empForm.is_valid():
+            empForm.save()
+            return redirect("all_employees")
+    data = {'formData':empForm}
+    return render(request, "employee.html", data)
+
+
+
+
+def DeleteEmployeeView(request, id):
+    emp = Emloyee.objects.get(id = id)
+    emp.delete()
+    return redirect("all_employees")
+
+
+
+def ActiveEmployees(request):
+    emp = Emloyee.objects.filter(isActive = True)
+    data = {"data": emp}
+    return render(request, "all_employee.html", context=data)
+
+
+def filterEmployee(request, salary):
+    emp = Emloyee.objects.filter(salary__gte = salary)
+    data = {"data": emp}
+    return render(request, "all_employee.html", context=data)

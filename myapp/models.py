@@ -20,7 +20,7 @@ class customers(models.Model):
 class Emloyee(models.Model):
     name = models.CharField(max_length=20)
     salary = models.IntegerField(null=True, blank=True)
-    weight = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
+    age = models.DecimalField(max_digits=5, decimal_places=2, blank=True, null=True)
     email = models.EmailField( max_length=254, blank=True, null=True)
     isActive = models.BooleanField(default=True)
 

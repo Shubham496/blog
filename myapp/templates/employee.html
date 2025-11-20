@@ -12,9 +12,29 @@
     <td>{{ employee.id }}</td>
     <td> <a href="{{employee.id}}">{{ employee.name }}</a> </td>
     <td>{{ employee.salary }}</td>
-    <td>{{ employee.weight }}</td>
+    <td>{{ employee.age }}</td>
     <td>{{ employee.email }}</td>
     <td>{{ employee.isActive }}</td>
+
+
+    <br> <br> <br> <br> <br>
+    
+    <form method="post">
+        {% csrf_token %}
+        {{ formData.as_p }}
+        <button type="submit">Save</button>
+    </form>
+
+
+
+<br> <br> <br>
+
+<a href="{% url 'empDelete' employee.id %}"><h1>Delete {{employee.name}} </h1></a>
+
+
+
+
+
 </body>
 
 </html>
