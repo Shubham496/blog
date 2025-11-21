@@ -141,7 +141,9 @@ def signin(request):
 
 
 
-
+def signout(request):
+    logout(request)
+    return redirect('signin')
 
 
 def profile(request, id=1):
@@ -152,8 +154,4 @@ def profile(request, id=1):
     data = {"data": user}
     return render(request,"profile.html", data)
         
-
-
-
-
 

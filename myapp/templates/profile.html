@@ -8,10 +8,16 @@
 {% block content %}
 
 {{data}}
- 
+
 {{ data.first_name}}
 {{ data.last_name}}
 
 {{data.age}}
 {{data.bio}}
+
+{{data.profileImage}}
+
+
+<a href="{% url "signout" %}">signout</a>
+
 {% endblock %}
