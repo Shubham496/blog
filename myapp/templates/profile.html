@@ -7,14 +7,11 @@
 
 {% block content %}
 
-{{user.username}}
-
 {{data}}
  
-{{user.username}}
-{{user.id}}
-{{user.bio}}
+{{ data.first_name}}
+{{ data.last_name}}
 
-
-
+{{data.age}}
+{{data.bio}}
 {% endblock %}

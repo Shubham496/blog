@@ -126,14 +126,30 @@ from django.contrib.auth.models import User
 from django.contrib.auth import logout, login, authenticate
 
 
+def signin(request):
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request=request, username=username, password=password)
+        if not user:
+            data = {"message":"incorrect username or password"}
+            return render(request, 'signin.html', data)
+        login(request, user=user)
+        return redirect("profile")
+    return render(request, 'signin.html')
+
+
+
+
+
 
 
 def profile(request, id=1):
     profile = request.user
     if not request.user.is_authenticated:
         return redirect('home' )
-    
-    data = {"data": profile}
+    user = UserProfile.objects.get(user=profile)
+    data = {"data": user}
     return render(request,"profile.html", data)
         
 
